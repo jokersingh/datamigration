@@ -1,0 +1,8 @@
+article :  
+  fields : 
+    - abc
+    - def      
+notarticle :     
+  fields : 
+    - abc
+    - def
