@@ -21,6 +21,13 @@ public final class QueryBuilder {
 		return queryBuilder.toString();
 	}
 	
+	public static String selectQueryBuilder(String tableName){
+		StringBuilder queryBuilder = new StringBuilder();
+		queryBuilder.append("SELECT * FROM ");
+		queryBuilder.append(tableName);
+		return queryBuilder.toString();
+	}
+	
 	public static String insertQueryBuilder(String tableName, String[] fields){
 		StringBuilder queryBuilder = new StringBuilder();	
 		StringBuilder values = new StringBuilder();	

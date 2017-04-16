@@ -3,7 +3,7 @@
  */
 package com.barun.datamigration.model;
 
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * @author bibhu
@@ -12,7 +12,7 @@ import java.util.List;
 public class Table {
 	
 	private String name;
-	private List<String> fields;
+	private String[] fields;
 	/**
 	 * @return the name
 	 */
@@ -28,13 +28,13 @@ public class Table {
 	/**
 	 * @return the fields
 	 */
-	public List<String> getFields() {
+	public String[] getFields() {
 		return fields;
 	}
 	/**
 	 * @param fields the fields to set
 	 */
-	public void setFields(List<String> fields) {
+	public void setFields(String[] fields) {
 		this.fields = fields;
 	}
 	/* (non-Javadoc)
@@ -42,10 +42,8 @@ public class Table {
 	 */
 	@Override
 	public String toString() {
-		return "Table [name=" + name + ", fields=" + fields + "]";
+		return "Table [name=" + name + ", fields=" + Arrays.toString(fields) + "]";
 	}
-
-		
 	
 	
 }

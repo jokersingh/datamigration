@@ -50,11 +50,12 @@ public class CustomRecordMapper<P> extends AbstractRecordMapper<P> implements Re
         this.fields = fields;
     }
     
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Record<P> processRecord(final JdbcRecord record) throws Exception {
         ResultSet resultSet = record.getPayload();
         initFieldNames(resultSet);
-        Map<String, String> values = new HashMap<>();
+        Map<String, Object> values = new HashMap<>();
         for (int i = 0; i < fields.length; i++) {
         	if("TIMESTAMP".equals(columType.get(fields[i]))){
         		values.put(fields[i], resultSet.getTimestamp(i + 1).toString());
@@ -62,7 +63,7 @@ public class CustomRecordMapper<P> extends AbstractRecordMapper<P> implements Re
         		values.put(fields[i], resultSet.getString(i + 1));
         	}
         }
-        return new GenericRecord<>(record.getHeader(), objectMapper.mapObject(values));
+        return (Record<P>) new GenericRecord<>(record.getHeader(), values);
     }
 
     private void initFieldNames(final ResultSet resultSet) throws SQLException {
